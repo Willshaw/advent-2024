@@ -7,8 +7,12 @@ import {
     rotateArray,
     mirrorArray,
     get2dNeighbors,
+    countOccourancesInArray,
 } from '../dist/utils.js';
 
+test(`can count occourances in an array`, () => {
+    expect(countOccourancesInArray(3,[4,3,5,3])).toBe(2);
+});
 
 test(`can make a deep copy`, () => {
     const a = { foo: 'bar' };

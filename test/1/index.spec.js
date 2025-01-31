@@ -5,11 +5,13 @@ import {
   transposeLocations,
   transposeAndSortLocations,
   locationDiffTotal,
+  similarityScore,
 } from "../../dist/1/locations.js";
 
 const examples = [
   {
     total: 11,
+    similarity: 31,
     input: [
       [3,4],
       [4,3],
@@ -65,7 +67,10 @@ test(`arrays can be transposed and sorted`, () => {
 
 examples.forEach((example, i) => {
   test(`correct total from input (index ${i})`, () => {
-    const example = examples[i];
     expect(locationDiffTotal(example.input)).toBe(example.total);
+  });
+
+  test(`similarity score from input (index ${i})`, () => {
+    expect(similarityScore(example.input)).toBe(example.similarity);
   });
 });

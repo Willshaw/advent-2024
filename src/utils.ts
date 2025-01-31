@@ -2,6 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import { Coord } from './utils.interface';
 
+const countOccourancesInArray = (target: number, array: number[]) => {
+    return array.filter((n) => n === target).length;
+};
+
+
 const combinations = (array: number[], length: number): number[] => {
     return array.flatMap((v, i) => length > 1
         ? combinations(array.slice(i + 1), length - 1).map(w => w + v)
@@ -177,4 +182,5 @@ export {
     onlyUnique,
     leastCommonMultiple,
     get2dNeighbors,
+    countOccourancesInArray,
 }
