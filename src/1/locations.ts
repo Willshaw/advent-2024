@@ -29,10 +29,7 @@ const transposeAndSortLocations = (locations: number[][]) => {
 const locationDiffTotal = (locations: number[][]) => {
   const sorted_locations = transposeAndSortLocations(locations);
   return sorted_locations[0].reduce((acc, location, i) => {
-    console.log(i, sorted_locations[0][i], sorted_locations[1][i]);
-    const diff = locationIdDiff(sorted_locations, i);
-    console.log(diff);
-    return acc + diff;
+    return acc + locationIdDiff(sorted_locations, i);
   }, 0);
 };
 

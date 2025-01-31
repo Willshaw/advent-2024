@@ -40,16 +40,18 @@
  * --- Part Two ---
  */
 
-// import { splitFileOnNewLine } from "../utils";
-// import { calibrationSum } from "./calibration.js";
+import { splitFileOnNewLine } from "../utils";
+import { locationDiffTotal } from "./locations";
 
 const run_1 = () => {
   console.log("GO 1");
 
-  // const data: string[] = splitFileOnNewLine("../input/1.txt");
+  const data: string[] = splitFileOnNewLine("../input/1.txt");
+  // turn ["1   2"] into [[1, 2]]
+  const locations = data.map((line) => line.replace(/\s+/g,',').split(",").map((n) => parseInt(n)));
 
-  // const sum = calibrationSum(data);
-  // console.log("Part 1, calibration sum:", sum);
+  const diff_total = locationDiffTotal(locations);
+  console.log("Part 1, diff total:", diff_total);
   // const sum_digits = calibrationSum(data, true);
   // console.log("Part 2, calibration sum with digits:", sum_digits);
 };
