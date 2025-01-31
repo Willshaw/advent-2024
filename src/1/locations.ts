@@ -1,7 +1,7 @@
 // import { DigitMap } from "./interfaces";
 
-const locationIdDiff = (locationIds: number[]) => {
-  return Math.abs(locationIds[0] - locationIds[locationIds.length - 1]);
+const locationIdDiff = (locations: number[][], index:number) => {
+  return Math.abs(locations[0][index] - locations[1][index]);
 };
 
 // transpose arrays and sort into ascending order
@@ -28,8 +28,9 @@ const transposeAndSortLocations = (locations: number[][]) => {
 // get total of all location differences
 const locationDiffTotal = (locations: number[][]) => {
   const sorted_locations = transposeAndSortLocations(locations);
-  return sorted_locations.reduce((acc, location) => {
-    const diff = locationIdDiff(location);
+  return sorted_locations[0].reduce((acc, location, i) => {
+    console.log(i, sorted_locations[0][i], sorted_locations[1][i]);
+    const diff = locationIdDiff(sorted_locations, i);
     console.log(diff);
     return acc + diff;
   }, 0);

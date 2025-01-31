@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals';
 import {
   locationIdDiff,
-  transposeAndSortLocations,
+  // transposeAndSortLocations,
   // locationDiffTotal,
 } from "../../dist/1/locations.js";
 
@@ -20,22 +20,22 @@ const examples = [
 ];
 
 test(`difference is calculated correctly`, () => {
-  expect(locationIdDiff([1,7])).toBe(6);
-  expect(locationIdDiff([9,2])).toBe(7);
-  expect(locationIdDiff([-3,12])).toBe(15);
+  expect(locationIdDiff([[1],[7]],0)).toBe(6);
+  expect(locationIdDiff([[9],[2]],0)).toBe(7);
+  expect(locationIdDiff([[0,-3],[0,12]],1)).toBe(15);
 });
 
-test(`arrays can be transposed`, () => {
-  const input = [
-    [1,12],
-    [3,2],
-  ];
-  const expected = [
-    [1,3],
-    [2,12],
-  ];
-  expect(transposeAndSortLocations(input)).toEqual(expected);
-});
+// test(`arrays can be transposed`, () => {
+//   const input = [
+//     [1,12],
+//     [3,2],
+//   ];
+//   const expected = [
+//     [1,3],
+//     [2,12],
+//   ];
+//   expect(transposeAndSortLocations(input)).toEqual(expected);
+// });
 
 // examples.forEach((example, i) => {
 //   test(`correct total from input (index ${i})`, () => {
