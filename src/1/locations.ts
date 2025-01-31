@@ -4,10 +4,8 @@ const locationIdDiff = (locations: number[][], index:number) => {
   return Math.abs(locations[0][index] - locations[1][index]);
 };
 
-// transpose arrays and sort into ascending order
-const transposeAndSortLocations = (locations: number[][]) => {
+const transposeLocations = (locations: number[][]) => {
   const transposed_locations: number[][] = [];
-  
   locations.reduce((acc, location) => {
     location.forEach((value, i) => {
       if (!acc[i]) {
@@ -17,12 +15,18 @@ const transposeAndSortLocations = (locations: number[][]) => {
     });
     return acc;
   }, transposed_locations);
+  return transposed_locations;
+}
 
-  const sorted_locations = transposed_locations.map((location) => {
+const sortLocations = (locations: number[][]) => {
+  return locations.map((location) => {
     return location.sort((a, b) => a - b);
   });
+}
 
-  return sorted_locations;
+// transpose arrays and sort into ascending order
+const transposeAndSortLocations = (locations: number[][]) => {
+  return sortLocations(transposeLocations(locations));
 };
 
 // get total of all location differences
@@ -33,4 +37,4 @@ const locationDiffTotal = (locations: number[][]) => {
   }, 0);
 };
 
-export { locationIdDiff, transposeAndSortLocations, locationDiffTotal };
+export { locationIdDiff, transposeLocations, sortLocations, transposeAndSortLocations, locationDiffTotal };

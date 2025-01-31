@@ -34,6 +34,19 @@
  * therefore 2+1+1+2+5 = 11
  * 
  * --- Part Two ---
+ * figure out exactly how often each number from the left list appears in the right list.
+ * Calculate a total similarity score by adding up each number in the left list after multiplying it by the number of times that number appears in the right list.
+ *
+ * for the same exmaple list, here is the process of finding the similarity score:
+ *
+ * left[0] is 3 and appears in right three times, similarity score increases by 3 * 3 = 9.
+ * left[1] is 4 and appears in right once, similarity score increases by 4 * 1 = 4.
+ * left[2] is 2 and does not appear in right, so similarity score does not increase. (2 * 0 = 0)
+ * left[3] is 1 and does not appear in right, so similarity score does not increase. (1 * 0 = 0)
+ * left[4] is 3 and appears in right three times, similarity score increases by 3 * 3 = 9.
+ * left[5] is 3 and appears in right three times, similarity score increases by 3 * 3 = 9.
+ *
+ * similarity score is 31 (9 + 4 + 0 + 0 + 9 + 9).
  */
 
 import { splitFileOnNewLine } from "../utils";
