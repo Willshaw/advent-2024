@@ -6,7 +6,7 @@ const locationIdDiff = (locationIds: number[]) => {
 
 // transpose arrays and sort into ascending order
 const transposeAndSortLocations = (locations: number[][]) => {
-  const new_locations: number[][] = [];
+  const transposed_locations: number[][] = [];
   
   locations.reduce((acc, location) => {
     location.forEach((value, i) => {
@@ -16,9 +16,13 @@ const transposeAndSortLocations = (locations: number[][]) => {
       acc[i].push(value);
     });
     return acc;
-  }, new_locations);
+  }, transposed_locations);
 
-  return new_locations;
+  const sorted_locations = transposed_locations.map((location) => {
+    return location.sort((a, b) => a - b);
+  });
+
+  return sorted_locations;
 };
 
 // get total of all location differences
