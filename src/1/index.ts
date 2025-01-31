@@ -53,8 +53,6 @@ import { splitFileOnNewLine } from "../utils";
 import { locationDiffTotal, similarityScore } from "./locations";
 
 const run_1 = () => {
-  console.log("GO 1");
-
   const data: string[] = splitFileOnNewLine("../input/1.txt");
   // turn ["1   2"] into [[1, 2]]
   const locations = data.map((line) => line.replace(/\s+/g,',').split(",").map((n) => parseInt(n)));
