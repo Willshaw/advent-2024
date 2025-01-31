@@ -1,7 +1,8 @@
 import { expect, test } from '@jest/globals';
 import {
   locationIdDiff,
-  locationDiffTotal,
+  transposeAndSortLocations
+  // locationDiffTotal,
 } from "../../dist/1/locations.js";
 
 const examples = [
@@ -24,11 +25,21 @@ test(`difference is calculated correctly`, () => {
   expect(locationIdDiff([-3,12])).toBe(15);
 });
 
+test(`arrays can be transposed`, () => {
+  const input = [
+    [1,4],
+    [3,2],
+  ];
+  const expected = [
+    [1,3],
+    [4,2],
+  ];
+  expect(transposeAndSortLocations(input)).toEqual(expected);
+});
+
 // examples.forEach((example, i) => {
-//   test(`correct sum from input (index ${i})`, () => {
+//   test(`correct total from input (index ${i})`, () => {
 //     const example = examples[i];
-//     expect(calibrationSum(example.input, example.include_words)).toBe(
-//       example.sum
-//     );
+//     expect(locationDiffTotal(example.input)).toBe(example.total);
 //   });
 // });
