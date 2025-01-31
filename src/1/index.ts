@@ -50,7 +50,7 @@
  */
 
 import { splitFileOnNewLine } from "../utils";
-import { locationDiffTotal } from "./locations";
+import { locationDiffTotal, similarityScore } from "./locations";
 
 const run_1 = () => {
   console.log("GO 1");
@@ -59,10 +59,8 @@ const run_1 = () => {
   // turn ["1   2"] into [[1, 2]]
   const locations = data.map((line) => line.replace(/\s+/g,',').split(",").map((n) => parseInt(n)));
 
-  const diff_total = locationDiffTotal(locations);
-  console.log("Part 1, diff total:", diff_total);
-  // const sum_digits = calibrationSum(data, true);
-  // console.log("Part 2, calibration sum with digits:", sum_digits);
+  console.log("Part 1, diff total:", locationDiffTotal(locations));
+  console.log("Part 2, similarity score:", similarityScore(locations));
 };
 
 export { run_1 };
