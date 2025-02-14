@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals';
 import {
-  isLevelChangeSafe,
+  isChangeConsistent,
   isReportSafe,
   countSafeReports,
 } from "../../dist/2/reports.js";
@@ -19,12 +19,12 @@ const examples = [
   },
 ];
 
-test(`is a level change safe`, () => {
-  expect(isLevelChangeSafe(1,3)).toBe(true);
-  expect(isLevelChangeSafe(4,1)).toBe(true);
-  expect(isLevelChangeSafe(7,1)).toBe(false);
-  expect(isLevelChangeSafe(3,9)).toBe(false);
-});
+test(`is a change positive`, () => {
+  expect(isChangeConsistent(1,3)).toBe(true);
+  expect(isChangeConsistent(-1,-3)).toBe(true);
+  expect(isChangeConsistent(-1,3)).toBe(false);
+  expect(isChangeConsistent(1,-3)).toBe(false);
+})
 
 test(`is a report safe`, () => {
   expect(isReportSafe([1,2,3])).toBe(true);
