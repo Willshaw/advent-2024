@@ -1,10 +1,11 @@
 import { expect, test } from '@jest/globals';
 import {
+  countSafeReports,
 } from "../../dist/2/reports.js";
 
 const examples = [
   {
-    total_safer_reports: 2,
+    total_safe_reports: 2,
     input: [
       [7, 6, 4, 2, 1],
       [1, 2, 7, 8, 9],
@@ -59,11 +60,11 @@ const examples = [
 // });
 
 examples.forEach((example, i) => {
-  test(`correct total from input (index ${i})`, () => {
-    expect(locationDiffTotal(example.input)).toBe(example.total);
+  test(`correct number of safer reports (index ${i})`, () => {
+    expect(countSafeReports(example.input)).toBe(example.total_safe_reports);
   });
 
-  test(`similarity score from input (index ${i})`, () => {
-    expect(similarityScore(example.input)).toBe(example.similarity);
-  });
+  // test(`similarity score from input (index ${i})`, () => {
+  //   expect(similarityScore(example.input)).toBe(example.similarity);
+  // });
 });
