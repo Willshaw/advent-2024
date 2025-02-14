@@ -21,6 +21,7 @@ const examples = [
 
 test(`is a change positive`, () => {
   expect(isChangeConsistent(1,3)).toBe(true);
+  expect(isChangeConsistent(-1,-1)).toBe(true);
   expect(isChangeConsistent(-1,-3)).toBe(true);
   expect(isChangeConsistent(-1,3)).toBe(false);
   expect(isChangeConsistent(1,-3)).toBe(false);

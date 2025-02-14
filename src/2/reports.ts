@@ -5,32 +5,31 @@ const isChangeConsistent = (change_1, change_2) => {
   return !!(0 + change_1 >= 0) === !!(0 + change_2 >= 0); 
 }
 
-const getLevelChange = (level_1, level_2) => {
-  const change = level_1 - level_2,
+const getLevelChange = (level, prev_level) => {
+  const value = level - prev_level,
   return {
-    change,
-    abs_change: Math.abs(change),
+    value,
+    abs_value: Math.abs(value),
   }
 }
 
 const isReportSafe = (report: number[]) => {
-  const is_safe = report.reduce((curr, acc, index) => {
+  const is_safe = report.reduce((acc, curr, index) => {
     if(index === 0) {
       return true;
     }
     const change = getLevelChange(report[index-1], curr);
-    const is_safe_level = change.abs_change >= 1 && change.abs_change <= 3;
+    const is_safe_level = change.abs_value >= 1 && change.abs_value <= 3;
 
-    // the can't have been a change in direction yet, so we only care about the level
+    // there can't have been a change in direction yet, so we only care about the level
     if(index === 1) {
       return is_safe_level;
     }
 
     const prev_change = getLevelChange(report[index-2], report[index-1]);
-
-    const is_safe_direction = false;
+    return acc && isChangeConsistent(change.value, prev_change.value);
   }, true);  
-  return false;
+  return is_safe;
 }
 
 const countSafeReports = (reports: number[][]) => {
