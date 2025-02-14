@@ -1,12 +1,13 @@
 // import { DigitMap } from "./interfaces";
 import { countOccourancesInArray } from "../utils";
 
-const isChangeConsistent = (change_1, change_2) => {
+const isChangeConsistent = (change_1: number, change_2: number) => {
   return !!(0 + change_1 >= 0) === !!(0 + change_2 >= 0); 
 }
 
-const getLevelChange = (level, prev_level) => {
-  const value = level - prev_level,
+const getLevelChange = (level: number, prev_level: number) => {
+  const value = level - prev_level;
+
   return {
     value,
     abs_value: Math.abs(value),

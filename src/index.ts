@@ -2,19 +2,16 @@ const readline = require("readline");
 
 // import runs
 import { run_1 } from "./1/index";
+import { run as run_2 } from "./2/index";
 
 const provided_solution = parseInt(process.argv[2]);
 
 const solutions: (() => void)[] = [];
 solutions.push(run_1);
-
-// get list of solution numbers
-const solution_numbers = Object.keys(solutions).map((i) =>
-  solutions[parseInt(i)].name.replace(/run_/, "")
-);
+solutions.push(run_2);
 
 const checkValidSolution = (i: number) => {
-  return solution_numbers.includes("" + i);
+  return i <= solutions.length && i > 0;
 };
 
 const runSolution = (solution: number) => {
@@ -23,7 +20,7 @@ const runSolution = (solution: number) => {
     askForSolution();
   } else {
     console.log(`\n>> Running solution ${solution}\n`);
-    solutions[solution_numbers.indexOf(solution + "")]();
+    solutions[solution - 1]();
     process.exit();
   }
 };
@@ -35,7 +32,7 @@ const askForSolution = () => {
   });
 
   rl.question(
-    `Choose solution [${solution_numbers}]: `,
+    `Choose solution: `,
     function (solution: number) {
       // validate index
       rl.close();

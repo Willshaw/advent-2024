@@ -28,15 +28,15 @@
  */
 
 import { splitFileOnNewLine } from "../utils";
-import { locationDiffTotal, similarityScore } from "./locations";
+import { countSafeReports } from "./reports";
 
-const run_1 = () => {
-  const data: string[] = splitFileOnNewLine("../input/1.txt");
+const run = () => {
+  const data: string[] = splitFileOnNewLine("../input/2.txt");
   // turn ["1   2"] into [[1, 2]]
-  const locations = data.map((line) => line.replace(/\s+/g,',').split(",").map((n) => parseInt(n)));
+  const reports = data.map((line) => line.replace(/\s+/g,',').split(",").map((n) => parseInt(n)));
 
-  console.log("Part 1, diff total:", locationDiffTotal(locations));
-  console.log("Part 2, similarity score:", similarityScore(locations));
+  console.log("Part 1, safe reports total:", countSafeReports(reports));
+  // console.log("Part 2, similarity score:", similarityScore(reports));
 };
 
-export { run_1 };
+export { run };
