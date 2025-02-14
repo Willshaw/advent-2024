@@ -32,7 +32,7 @@ const askForSolution = () => {
   });
 
   rl.question(
-    `Choose solution: `,
+    `Choose solution (1 -> ${solutions.length}): `,
     function (solution: number) {
       // validate index
       rl.close();
