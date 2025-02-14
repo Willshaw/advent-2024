@@ -21,19 +21,16 @@ const isReportSafe = (report: number[]) => {
     const change = getLevelChange(report[index-1], curr);
     const is_safe_level = change.abs_value >= 1 && change.abs_value <= 3;
 
-    // there can't have been a change in direction yet, so we only care about the level
-    if(index === 1) {
-      return is_safe_level;
-    }
-
     const prev_change = getLevelChange(report[index-2], report[index-1]);
-    return acc && isChangeConsistent(change.value, prev_change.value);
+    return acc
+      && is_safe_level
+      && (index === 1 ? true : isChangeConsistent(change.value, prev_change.value));
   }, true);  
   return is_safe;
 }
 
 const countSafeReports = (reports: number[][]) => {
-  const safeReports = reports.filter((report) => isReportSafe);
+  const safeReports = reports.filter((report) => { return isReportSafe(report); });
   return safeReports.length;
 }
 

@@ -29,7 +29,7 @@ test(`is a change positive`, () => {
 
 test(`is a report safe`, () => {
   expect(isReportSafe([1,2,3])).toBe(true);
-  expect(isReportSafe((1,7,5))).toBe(false);
+  expect(isReportSafe(([1,7,5]))).toBe(false);
 });
 
 examples.forEach((example, i) => {
