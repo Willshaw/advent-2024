@@ -47,15 +47,15 @@
  * What's the actual password to open the door?
  */
 
-// import { splitFileOnNewLine } from "../utils";
-// import { locationDiffTotal, similarityScore } from "./locations";
+import { splitFileOnNewLine } from "../utils.ts";
+import { countNumInSequence } from "./safecracker.ts";
 
 export const run = () => {
-  // const data: string[] = splitFileOnNewLine("../input/1.txt");
+  const data: string[] = splitFileOnNewLine("../input/1.txt");
   // turn ["1   2"] into [[1, 2]]
   // const locations = data.map((line) => line.replace(/\s+/g,',').split(",").map((n) => parseInt(n)));
 
-  const pw = "poop";
+  const pw = countNumInSequence(50, 0, data);
 
   console.log("Part 1, diff total:", pw);
   // console.log("Part 2, similarity score:", similarityScore(locations));

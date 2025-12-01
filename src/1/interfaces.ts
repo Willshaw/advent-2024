@@ -1,3 +1,3 @@
-export interface DigitMap {
-  [key: string]: string;
-}
+// export interface DigitMap {
+//   [key: string]: string;
+// }
