@@ -1,14 +1,14 @@
-const readline = require("readline");
+import readline from "readline";
 
 // import runs
-import { run_1 } from "./1/index";
-import { run as run_2 } from "./2/index";
+import { run as run_1 } from "./1/index.ts";
+// import { run as run_2 } from "./2/index";
 
 const provided_solution = parseInt(process.argv[2]);
 
 const solutions: (() => void)[] = [];
 solutions.push(run_1);
-solutions.push(run_2);
+// solutions.push(run_2);
 
 const checkValidSolution = (i: number) => {
   return i <= solutions.length && i > 0;
@@ -33,14 +33,16 @@ const askForSolution = () => {
 
   rl.question(
     `Choose solution (1 -> ${solutions.length}): `,
-    function (solution: number) {
+    (solution: string) => {
       // validate index
       rl.close();
-      if (!checkValidSolution(solution)) {
+      const num_solution = parseInt(solution);
+
+      if (!checkValidSolution(num_solution)) {
         console.log("!! please choose a valid solution !!");
         askForSolution();
       }
-      runSolution(solution);
+      runSolution(num_solution);
     }
   );
 };

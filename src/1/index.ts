@@ -1,64 +1,62 @@
 /**
- * https://adventofcode.com/2024/day/1
+ * https://adventofcode.com/2025/day/1
  *
- * -- part one --
- * take the two lists of location IDs, sort them in ASC order, and total the diff between the items at each index
- * 
- * For example:
- * 
- * 3   4
- * 4   3
- * 2   5
- * 1   3
- * 3   9
- * 3   3 
- * 
- * In the example list above, once sorted it would look like this:
- * 
- * 1   3
- * 2   3
- * 3   3
- * 3   4
- * 3   5
- * 4   9
- * 
- * the pairs and distances would be as follows:
- * 
- * 1 and 3, diff 2.
- * 2 and 3, diff 1.
- * 3 and 3, diff 0.
- * 3 and 4, diff 1.
- * 3 and 5, diff 2.
- * 4 and 9, diff 5.
- * 
- * therefore 2+1+1+2+5 = 11
- * 
- * --- Part Two ---
- * figure out exactly how often each number from the left list appears in the right list.
- * Calculate a total similarity score by adding up each number in the left list after multiplying it by the number of times that number appears in the right list.
+ *  safe has a dial with only an arrow on it; around the dial are the numbers 0 through 99
+ * in order. As you turn the dial, it makes a small click noise as it reaches each number
  *
- * for the same exmaple list, here is the process of finding the similarity score:
+ * if the dial were pointing at 11, a rotation of R8 would cause the dial to point at 19.
+ * After that, a rotation of L19 would cause it to point at 0.
+ * Because the dial is a circle, turning the dial left from 0 one click makes it point at
+ * 99. Similarly, turning the dial right from 99 one click makes it point at 0.
  *
- * left[0] is 3 and appears in right three times, similarity score increases by 3 * 3 = 9.
- * left[1] is 4 and appears in right once, similarity score increases by 4 * 1 = 4.
- * left[2] is 2 and does not appear in right, so similarity score does not increase. (2 * 0 = 0)
- * left[3] is 1 and does not appear in right, so similarity score does not increase. (1 * 0 = 0)
- * left[4] is 3 and appears in right three times, similarity score increases by 3 * 3 = 9.
- * left[5] is 3 and appears in right three times, similarity score increases by 3 * 3 = 9.
+ * The dial starts by pointing at 50.
  *
- * similarity score is 31 (9 + 4 + 0 + 0 + 9 + 9).
+ * The actual password is the number of times the dial is left pointing at 0
+ *
+ * For example, suppose the attached document contained the following rotations:
+ *
+ * L68
+ * L30
+ * R48
+ * L5
+ * R60
+ * L55
+ * L1
+ * L99
+ * R14
+ * L82
+ *
+ * Following these rotations would cause the dial to move as follows:
+ *
+ * The dial starts by pointing at 50.
+ * The dial is rotated L68 to point at 82.
+ * The dial is rotated L30 to point at 52.
+ * The dial is rotated R48 to point at 0.
+ * The dial is rotated L5 to point at 95.
+ * The dial is rotated R60 to point at 55.
+ * The dial is rotated L55 to point at 0.
+ * The dial is rotated L1 to point at 99.
+ * The dial is rotated L99 to point at 0.
+ * The dial is rotated R14 to point at 14.
+ * The dial is rotated L82 to point at 32.
+ *
+ * Because the dial points at 0 a total of three times during this process,
+ * the password in this example is 3.
+ *
+ * Analyze the rotations in your attached document.
+ * What's the actual password to open the door?
  */
 
-import { splitFileOnNewLine } from "../utils";
-import { locationDiffTotal, similarityScore } from "./locations";
+// import { splitFileOnNewLine } from "../utils";
+// import { locationDiffTotal, similarityScore } from "./locations";
 
-const run_1 = () => {
-  const data: string[] = splitFileOnNewLine("../input/1.txt");
+export const run = () => {
+  // const data: string[] = splitFileOnNewLine("../input/1.txt");
   // turn ["1   2"] into [[1, 2]]
-  const locations = data.map((line) => line.replace(/\s+/g,',').split(",").map((n) => parseInt(n)));
+  // const locations = data.map((line) => line.replace(/\s+/g,',').split(",").map((n) => parseInt(n)));
 
-  console.log("Part 1, diff total:", locationDiffTotal(locations));
-  console.log("Part 2, similarity score:", similarityScore(locations));
+  const pw = "poop";
+
+  console.log("Part 1, diff total:", pw);
+  // console.log("Part 2, similarity score:", similarityScore(locations));
 };
-
-export { run_1 };
